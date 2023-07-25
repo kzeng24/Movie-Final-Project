@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const SERVER_API_URL = "https://movie-node-server-app.onrender.com/api"; //process.env.REACT_APP_SERVER_API_URL;
+const SERVER_API_URL = process.env.REACT_APP_SERVER_API_URL;
 const REVIEWS_API = `${SERVER_API_URL}/reviews`;
 
 export const createReview = async (review) => {

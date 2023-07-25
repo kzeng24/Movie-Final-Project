@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const SERVER_API_URL = "https://movie-node-server-app.onrender.com/api"; //process.env.REACT_APP_SERVER_API_URL;
+const SERVER_API_URL = process.env.REACT_APP_SERVER_API_URL;
 const MOVIES_API = `${SERVER_API_URL}/search`;
 
 export const findMovies = async ({ title, actor, director, year, genre }) => {
