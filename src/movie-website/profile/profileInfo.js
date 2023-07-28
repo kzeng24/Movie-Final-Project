@@ -184,34 +184,40 @@ function ProfileInfo({ isCurUser }) {
           <br />
           <br />
           <span>
-            {profile.roles && profile.roles.map((role, index) => (
-              <TagBtn
-                key={index}
-                text={role}
-                fn={
-                  isCurrentUserProfile ? () => handleRoleSelection(role) : null
-                }
-                selected={selectedButton === role}
-              />
-            ))}
-            {currentUser && !isCurrentUserProfile && profile?.roles.includes("CRITIC") && (
-              <>
-                {followedCritics.filter((critic) => critic._id === profile._id)
-                  .length === 0 ? (
-                  <FollowBtn
-                    text={"FOLLOW"}
-                    isFollowed={false}
-                    fn={() => handleFollow()}
-                  />
-                ) : (
-                  <FollowBtn
-                    text={"UNFOLLOW"}
-                    isFollowed={true}
-                    fn={() => handleUnFollow()}
-                  />
-                )}
-              </>
-            )}
+            {profile.roles &&
+              profile.roles.map((role, index) => (
+                <TagBtn
+                  key={index}
+                  text={role}
+                  fn={
+                    isCurrentUserProfile
+                      ? () => handleRoleSelection(role)
+                      : null
+                  }
+                  selected={selectedButton === role}
+                />
+              ))}
+            {currentUser &&
+              !isCurrentUserProfile &&
+              profile?.roles.includes("CRITIC") && (
+                <>
+                  {followedCritics.filter(
+                    (critic) => critic._id === profile._id
+                  ).length === 0 ? (
+                    <FollowBtn
+                      text={"FOLLOW"}
+                      isFollowed={false}
+                      fn={() => handleFollow()}
+                    />
+                  ) : (
+                    <FollowBtn
+                      text={"UNFOLLOW"}
+                      isFollowed={true}
+                      fn={() => handleUnFollow()}
+                    />
+                  )}
+                </>
+              )}
           </span>
           <br />
           <br />
@@ -224,11 +230,11 @@ function ProfileInfo({ isCurUser }) {
             </>
           )}
         </div>
-        <div className="wd-photo-col d-none d-md-block col-md-3 d-xl-none">
+        <div className="wd-photo-col d-none d-md-block col-md-3 d-xl-none px-5 py-5">
           <FaUserCircle size={200} />
         </div>
-        <div className="wd-photo-col d-none d-xl-block col-xl-5">
-          <FaUserCircle size={300} />
+        <div className="wd-photo-col d-none d-xl-block col-xl-5 px-5 py-5">
+          <FaUserCircle size={350} />
         </div>
       </div>
     );

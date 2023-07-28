@@ -11,13 +11,13 @@ function ReviewSection() {
         <div className="wd-review-div">
             <div className="wd-review-content">
 
-                <div className="col-2"></div>
+                {/* <div className="col-2"></div> */}
                 <div className="col-8">
                     <ReviewList />
                     <br/>
                     {currentUser && currentUser.roles[0] === 'CRITIC' && <AddReview />}
                 </div>
-                <div className="col-2"></div>
+                {/* <div className="col-2"></div> */}
             </div>
             <BackBtn />
         </div>

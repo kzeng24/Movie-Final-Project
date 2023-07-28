@@ -31,21 +31,17 @@ function ProfileLists({isCurUser}) {
       <div className="wd-review-content">
         {currentUser && (
           <div>
-            <div className="col-2"></div>
-            <div className="col-8 wd-list-col">
-              {profileUser && profileUser.roles && profileUser.roles.includes("VIEWER") && (
-                <div>
+            {profileUser &&
+              profileUser.roles &&
+              profileUser.roles.includes("VIEWER") && (
+                <>
                   <MoviesBucketList />
                   <FollowedCriticsList />
-                </div>
+                </>
               )}
-              {profileUser && profileUser.roles && profileUser.roles.includes("CRITIC") && (
-                <div>
-                  <CriticReviewList />
-                </div>
-              )}
-            </div>
-            <div className="col-2"></div>
+            {profileUser &&
+              profileUser.roles &&
+              profileUser.roles.includes("CRITIC") && <CriticReviewList />}
           </div>
         )}
       </div>

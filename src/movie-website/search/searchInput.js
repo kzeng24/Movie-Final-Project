@@ -40,10 +40,10 @@ function SearchInput() {
 
         <br />
         <div className="wd-margin">
-          <div className="d-flex ">
+          <div className="d-flex">
             <input
               type="text"
-              className="form-control"
+              className="form-control px-3"
               id="search-bar-search"
               placeholder="Search movies"
               onChange={(event) => setSearch(event.target.value)}

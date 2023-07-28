@@ -38,12 +38,12 @@ const ReviewItem = ({ review }) => {
 
             )}
             <h3>
-              {review.username} {reviewedByCurrentUser && " (You)"}
+              @{review.username} {reviewedByCurrentUser && " (You)"}
             </h3>
 
             <h4>{review.title}</h4>
             <Rating name="read-only" value={review.rating} readOnly />
-            <h5>Description: {review.description}</h5>
+            <h5>{review.description}</h5>
           </div>
         </NavLink>
       ) : (
@@ -54,10 +54,10 @@ const ReviewItem = ({ review }) => {
           onClick={forceLogin}
         >
           <div>
-            <h3>{review.username}</h3>
+            <h3>@{review.username}</h3>
             <h4>{review.title}</h4>
             <Rating name="read-only" value={review.rating} readOnly />
-            <h5>Description: {review.description}</h5>
+            <h5>{review.description}</h5>
           </div>
         </NavLink>
       )}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CriticReviewListItem from "./criticReviewListItem";
-import "../../index.css"
+import "../../index.css";
 import { findCriticReviewsThunk } from "../../../services/reviews-thunks";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";

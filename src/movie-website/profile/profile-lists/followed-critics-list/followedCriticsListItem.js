@@ -51,7 +51,7 @@ function FollowedCriticsListItem({critic}) {
             </h4>
           </div>
           <div className="d-lg-none col-12">
-            <FaUserCircle size={50} className="float-left mr-3" />
+            <FaUserCircle size={50} className="float-left mr-3 " />
             <h5>@{critic.username}</h5>
             <h4>
               {critic.firstName} {critic.lastName}

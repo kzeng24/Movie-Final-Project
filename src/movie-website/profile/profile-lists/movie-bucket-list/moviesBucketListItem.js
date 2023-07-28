@@ -1,12 +1,11 @@
 import React from "react";
 import "../../index.css";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { updateUserThunk } from "../../../services/auth-thunks";
 import { useLocation } from "react-router-dom";
 import DeleteBtn from "../../../../ui-styling/buttons/icons/deleteBtn";
-import { useState } from "react";
 
 function MovieBucketListItem({ movieInfo }) {
   const { currentUser } = useSelector(state => state.user);
@@ -49,10 +48,10 @@ function MovieBucketListItem({ movieInfo }) {
           </div>
           <div className="col-9 wd-movie-list-info d-none d-lg-block">
             <h3>{movieInfo.title}</h3>
-            <div>
+            <h5>
               Rating: {movieInfo.vote_average}
               <br />
-            </div>
+            </h5>
           </div>
           <div className="d-lg-none col-12">
             <img
