@@ -19,14 +19,13 @@ const AudienceList = () => {
       {!loading && (
         <div className="wd-review-list-div">
           <ul className="list-group wd-review-list">
+            <h3>Audience Reviews</h3>
+            <br />
             <li>
-              <h3>Audience Reviews</h3>
-              <br />
-            </li>
-            {audienceReviews.length > 0 &&
-              audienceReviews.map((review) => (
+              {audienceReviews.length > 0 && audienceReviews.map((review) => (
                 <AudienceItem key={review._id} review={review} />
               ))}
+            </li>
           </ul>
         </div>
       )}
