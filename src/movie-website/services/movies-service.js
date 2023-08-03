@@ -56,11 +56,13 @@ async function loadResults(movie_api, pages) {
     });
     movieList.push(...response.data.results);
   }
-  return movieList.filter((movie) => movie.backdrop_path != null);
+  return movieList;
 }
 
 async function queryMovieHelper(movie_api, pages) {
-  return (await loadResults(movie_api, pages)).filter(movie => !movie.genre_ids.includes(27));
+  return (await loadResults(movie_api, pages)).filter(
+    (movie) => !movie.genre_ids.includes(27) && movie.backdrop_path != null
+  );
 }
 
 export const findLatestMovies = async () => {
@@ -79,4 +81,9 @@ export const findUpcomingMovies = async () => {
   return (await queryMovieHelper(UPCOMING_MOVIES_API, 5))
     .filter((movie) => movie.vote_count === 0)
     .slice(0, 16);
+};
+
+// audience reviews
+export const findAudienceReviews = async (id) => {
+  return (await loadResults("https://api.themoviedb.org/3/movie/" + id + "/reviews", 1)).slice(0,2);
 };

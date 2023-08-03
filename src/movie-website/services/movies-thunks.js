@@ -30,3 +30,8 @@ export const findUpcomingMoviesThunk = createAsyncThunk(
   "upcomingMovies/findUpcomingMovies",
   async () => await moviesService.findUpcomingMovies()
 );
+
+export const findAudienceReviewsThunk = createAsyncThunk(
+  "audienceReviews/findAudienceReviews",
+  async (movieId) => await moviesService.findAudienceReviews(movieId)
+);
