@@ -39,6 +39,7 @@ function VideoBackground({ topMovieRef }) {
         url={video}
         playing={true}
         loop={true}
+        muted={true}
         width="100%"
         height="70vh"
         config={{
