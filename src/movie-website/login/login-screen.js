@@ -68,7 +68,15 @@ function LoginScreen() {
             />
             <br />
             <BlackTextBtn text={"Sign In"} fn={handleLogin} />
-            {loadingLogin && <><br /><br /><p>Loading ...</p></>}
+            {loadingLogin && (
+              <>
+                <br />
+                <br />
+                <div class="spinner-border wd-lightPurpleText" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </>
+            )}
           </div>
           <br />
 

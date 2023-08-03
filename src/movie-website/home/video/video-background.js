@@ -4,7 +4,7 @@ import "../../../ui-styling/index.css";
 import ExploreBtn from "../../../ui-styling/buttons/text/exploreBtn";
 import ReactPlayer from "react-player";
 import { useSelector, useDispatch } from "react-redux";
-import { findMovieVideoThunk } from "../../services/movie-video-thunks";
+import { findMovieVideoThunk } from "../../services/movies-thunks";
 
 function VideoBackground({ topMovieRef }) {
   const { currentUser } = useSelector((state) => state.user || {});
@@ -39,7 +39,6 @@ function VideoBackground({ topMovieRef }) {
         url={video}
         playing={true}
         loop={true}
-        muted={true}
         width="100%"
         height="70vh"
         config={{

@@ -150,7 +150,10 @@ function RegisterScreen() {
               <>
                 <br />
                 <br />
-                <p>Loading ...</p>
+                <div class="spinner-border wd-lightPurpleText" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+
               </>
             )}
           </div>

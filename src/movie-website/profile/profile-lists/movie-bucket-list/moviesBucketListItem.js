@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { updateUserThunk } from "../../../services/auth-thunks";
 import { useLocation } from "react-router-dom";
 import DeleteBtn from "../../../../ui-styling/buttons/icons/deleteBtn";
+import {BsStars} from "react-icons/bs";
 
 function MovieBucketListItem({ movieInfo }) {
   const { currentUser } = useSelector(state => state.user);
@@ -32,13 +33,10 @@ function MovieBucketListItem({ movieInfo }) {
         state={{ movieInfo }}
         className="list-group-item list-group-item-action flex-column align-items-start wd-movie-list-item"
       >
-        {
-          (location.pathname.endsWith("/profile") || location.pathname.endsWith(`/profile/${currentUser.username}`)) &&
-          <DeleteBtn
-            fn={(e) => handleUnSaveBtn(e)}
-            className={"float-end"}
-          />
-        }
+        {(location.pathname.endsWith("/profile") ||
+          location.pathname.endsWith(`/profile/${currentUser.username}`)) && (
+          <DeleteBtn fn={(e) => handleUnSaveBtn(e)} className={"float-end"} />
+        )}
         <div className="row p-3 wd-movie-list-row">
           <div className="col-3 wd-movie-list-image d-none d-lg-block">
             <img
@@ -48,9 +46,11 @@ function MovieBucketListItem({ movieInfo }) {
           </div>
           <div className="col-9 wd-movie-list-info d-none d-lg-block">
             <h3>{movieInfo.title}</h3>
+            <br />
             <h5>
-              Rating: {movieInfo.vote_average}
+              <BsStars /> {movieInfo.vote_average}
               <br />
+              <i>{movieInfo.tagline}</i>
             </h5>
           </div>
           <div className="d-lg-none col-12">
@@ -59,9 +59,11 @@ function MovieBucketListItem({ movieInfo }) {
               className="float-left mr-3 wd-md-screen-size-img"
             />
             <h3>{movieInfo.title}</h3>
+            <br />
             <div>
-              Rating: {movieInfo.vote_average}
+              <BsStars /> {movieInfo.vote_average}
               <br />
+              <i>{movieInfo.tagline}</i>
             </div>
           </div>
         </div>

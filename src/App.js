@@ -13,6 +13,9 @@ import { getProfileByUsername } from "./movie-website/services/auth-service";
 import movieVideoReducer from "./movie-website/reducers/movie-video-reducer";
 import topMoviesReducer from "./movie-website/reducers/top-movies-reducer";
 import newMoviesReducer from "./movie-website/reducers/new-movies-reducer";
+import popularMoviesReducer from "./movie-website/reducers/popular-movies-reducer";
+import upcomingMoviesReducer from "./movie-website/reducers/upcoming-movies-reducer";
+import movieDetailsReducer from "./movie-website/reducers/movie-details-reducer";
 
 const store = configureStore({
   reducer: {
@@ -22,6 +25,9 @@ const store = configureStore({
     newMovies: newMoviesReducer,
     video: movieVideoReducer,
     topMovies: topMoviesReducer,
+    popularMovies: popularMoviesReducer,
+    upcomingMovies: upcomingMoviesReducer,
+    movieDetails: movieDetailsReducer
   },
 });
 

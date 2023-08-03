@@ -28,7 +28,7 @@ function MoviesBucketList() {
   return (
     <div>
       <ul className="wd-profile-list list-group w-100">
-        <h3>Saved Movies List</h3>
+        <h3>Saved Movies</h3>
         <br />
         {savedMovies?.map((movie) => (
           <li>

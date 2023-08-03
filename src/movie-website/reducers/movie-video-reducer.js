@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { findMovieVideoThunk } from "../services/movie-video-thunks";
+import { findMovieVideoThunk } from "../services/movies-thunks";
 
 const initialState = {
   video: "",

@@ -3,6 +3,7 @@ import MyNav from "../../nav-components/nav";
 import MovieListItem from "./movie-info";
 import ReviewSection from "./reviews/reviewSection";
 import { useSelector } from "react-redux";
+import MovieClipSection from "./movie-clip";
 
 function Details() {
   const { currentUser } = useSelector((state) => state.user);
@@ -22,6 +23,8 @@ function Details() {
         <MyNav />
       )}
       <MovieListItem />
+      <br />
+      <MovieClipSection />
       <ReviewSection />
     </div>
   );

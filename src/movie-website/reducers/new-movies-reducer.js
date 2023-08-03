@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { findNewMoviesThunk } from "../services/new-movies-thunks";
+import { findNewMoviesThunk } from "../services/movies-thunks";
 
 const initialState = {
   newMovies: [],
@@ -18,10 +18,7 @@ const newMoviesSlice = createSlice({
         },
         [findNewMoviesThunk.fulfilled]: (state, {payload}) => {
             state.loading = false;
-            const filterMovies = payload.filter((movie) =>
-              !movie.genre_ids.includes(27)
-            );
-            state.newMovies = filterMovies.slice(0, 10);
+            state.newMovies = payload;
             state.firstMovie = state.newMovies[0];
         },
         [findNewMoviesThunk.rejected]: (state, action) => {

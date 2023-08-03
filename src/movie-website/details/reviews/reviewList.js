@@ -20,7 +20,7 @@ const ReviewList = () => {
         <div className="wd-review-list-div">
             <ul className="list-group wd-review-list">
                 <li >
-                    <h3>Critic Reviews</h3><br />
+                    <h3>User Reviews</h3><br />
                 </li>
                 {
                     movieReviews && movieReviews.map((review) =>

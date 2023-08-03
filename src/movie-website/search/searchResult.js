@@ -12,6 +12,7 @@ function SearchResult() {
 
   useEffect(() => {
     dispatch(findMoviesThunk({title: searchParams.get("q")}));
+
   }, [dispatch]);
 
   return (
@@ -23,7 +24,7 @@ function SearchResult() {
               {status === 'loading' && <div>Loading...</div>}
               {status === 'succeeded' && movies && (
                 <div className="list-group ">
-                  {movies.results.map((movie) => (
+                  {movies.results.filter(movie => movie.backdrop_path).map((movie) => (
                     <NavLink
                       to={`/details/${movie.id}`}
                       state={{ movie }}
