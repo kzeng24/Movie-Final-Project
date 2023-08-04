@@ -5,6 +5,7 @@ import ReviewSection from "./reviews/reviewSection";
 import { useSelector } from "react-redux";
 import MovieClipSection from "./movie-clip";
 import AudienceReviewSection from "./audience-reviews";
+import Cast from "./cast";
 
 function Details() {
   const { currentUser } = useSelector((state) => state.user);
@@ -24,9 +25,9 @@ function Details() {
         <MyNav />
       )}
       <MovieListItem />
+      <Cast />
       <br />
       <MovieClipSection />
-      <br />
       <AudienceReviewSection />
       <ReviewSection />
     </div>

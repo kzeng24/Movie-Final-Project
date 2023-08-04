@@ -5,6 +5,7 @@ const LATEST_MOVIES_API = "https://api.themoviedb.org/3/movie/now_playing";
 const POPULAR_MOVIES_API = "https://api.themoviedb.org/3/movie/popular";
 const TOP_MOVIES_API = "https://api.themoviedb.org/3/movie/top_rated";
 const UPCOMING_MOVIES_API = "https://api.themoviedb.org/3/movie/upcoming";
+const MOVIE_DETAILS = "https://api.themoviedb.org/3/movie/";
 const API_KEY = "ffdfb660a1488ae7f304368f73e0e7ec";
 
 // loading video
@@ -36,12 +37,29 @@ export const findMovies = async (searchParams) => {
 
 // movie details
 export const findMovieDetails = async(id) => {
-  const response = await axios.get("https://api.themoviedb.org/3/movie/" + id, {
+  const movieDetails = await axios.get(MOVIE_DETAILS + id, {
     params: {
       api_key: API_KEY,
     },
   });
-  return response.data;
+  const credits = await axios.get(MOVIE_DETAILS + id + "/credits", {
+    params: {
+      api_key: API_KEY,
+    },
+  });
+  const uniqueCrewId = [];
+  const uniqueCrew = [];
+  for (let i = 0; i < 8; i++) {
+    if (!uniqueCrewId.includes(credits.data.crew[i].id) && credits.data.crew[i].profile_path) {
+      uniqueCrewId.push(credits.data.crew[i].id);
+      uniqueCrew.push(credits.data.crew[i]);
+    }
+  }
+  return {
+    ...movieDetails.data,
+    cast: credits.data.cast.slice(0, 4).filter(cast => cast.profile_path),
+    crew: uniqueCrew.slice(0, 4),
+  };
 }
 
 // displaying carousels
@@ -85,5 +103,5 @@ export const findUpcomingMovies = async () => {
 
 // audience reviews
 export const findAudienceReviews = async (id) => {
-  return (await loadResults("https://api.themoviedb.org/3/movie/" + id + "/reviews", 1)).slice(0,2);
+  return (await loadResults(MOVIE_DETAILS + id + "/reviews", 1)).slice(0, 2);
 };

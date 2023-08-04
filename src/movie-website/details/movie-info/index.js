@@ -60,6 +60,7 @@ const MovieListItem = () => {
     return <div>Loading...</div>;
   }
 
+  console.log("TEST ",movieDetails);
   return (
     <div>
       <div
@@ -107,7 +108,7 @@ const MovieListItem = () => {
             <div className="col-sm-9 col-md-5">
               <h1>{movieDetails.title}</h1>
               {movieDetails.original_language !== "en" && (
-                <h5>{movieDetails.original_title}</h5>
+                <h5>({movieDetails.original_title})</h5>
               )}
               <br />
 
