@@ -47,33 +47,37 @@ const Cast = () => {
                   </div>
                 ))}
               </div>
-              <br />
-              <div className="row">
-                <h3>Crew</h3>
-                <br />
-                <br />
-                {movieDetails.crew.map((staff) => (
-                  <div className="col-3">
-                    <h5>
-                      <b>{staff.name}</b>
-                    </h5>
-                    <p>{staff.job}</p>
+              {movieDetails.crew.length > 0 && (
+                <>
+                  <br />
+                  <div className="row">
+                    <h3>Crew</h3>
+                    <br />
+                    <br />
+                    {movieDetails.crew.map((staff) => (
+                      <div className="col-3">
+                        <h5>
+                          <b>{staff.name}</b>
+                        </h5>
+                        <p>{staff.job}</p>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-              <div className="row">
-                {movieDetails.crew.map((staff) => (
-                  <div className="col-3">
-                    <img
-                      src={
-                        "https://image.tmdb.org/t/p/w440_and_h660_face/" +
-                        staff.profile_path
-                      }
-                      className="w-100"
-                    />
+                  <div className="row">
+                    {movieDetails.crew.map((staff) => (
+                      <div className="col-3">
+                        <img
+                          src={
+                            "https://image.tmdb.org/t/p/w440_and_h660_face/" +
+                            staff.profile_path
+                          }
+                          className="w-100"
+                        />
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </>
+              )}
             </div>
           </div>
         </div>
