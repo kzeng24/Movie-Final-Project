@@ -10,6 +10,7 @@ function BackBtn() {
   return (
     <button
       onClick={() => navigate(-1)}
+
       className="square rounded-circle wd-pinkBackground wd-circleBtn wd-whiteText"
     >
       <MdOutlineArrowBackIos size={25} />

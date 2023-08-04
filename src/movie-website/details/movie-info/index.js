@@ -17,7 +17,7 @@ import {RxLapTimer} from "react-icons/rx";
 
 const MovieListItem = () => {
   const { currentUser } = useSelector(state => state.user);
-  const {movieDetails} = useSelector(state => state.movieDetails);
+  const { movieDetails } = useSelector(state => state.movieDetails);
 
   const userSavedMovies = currentUser?.savedMovies;
   const { id } = useParams();
@@ -56,18 +56,21 @@ const MovieListItem = () => {
   }
 
   // Check if movie exists and that all lists are loaded
-  if (!movieDetails || !movieDetails.genres || !movieDetails.production_countries) {
+  if (!movieDetails) {
     return <div>Loading...</div>;
   }
 
-  console.log("TEST ",movieDetails);
   return (
     <div>
       <div
         className="wd-video-details-background row"
         style={{
-          backgroundImage: `url(
+          backgroundImage: movieDetails.backdrop_path
+            ? `url(
             http://image.tmdb.org/t/p/w500/${movieDetails.backdrop_path}
+          )`
+            : `url(
+            http://image.tmdb.org/t/p/w500/${movieDetails.poster_path}
           )`,
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -135,14 +138,14 @@ const MovieListItem = () => {
 
               <br />
               <h5>
-                {movieDetails.genres.map((genre) => (
+                {movieDetails.genres?.map((genre) => (
                   <>
                     <TagBtn text={genre.name} />
                   </>
                 ))}
               </h5>
               <br />
-              {movieDetails.production_countries.length > 0 && (
+              {movieDetails.production_countries?.length > 0 && (
                 <h5>
                   <SlGlobe />{" "}
                   {
@@ -154,9 +157,12 @@ const MovieListItem = () => {
               )}
 
               <br />
-              <h5>
-                <RxLapTimer /> {movieDetails.runtime} minutes
-              </h5>
+              {movieDetails.runtime > 0 && (
+                <h5>
+                  <RxLapTimer /> {movieDetails.runtime} minutes
+                </h5>
+              )}
+
               <br />
               {movieDetails.homepage && (
                 <h5>

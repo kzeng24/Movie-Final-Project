@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import ProfileBtn from "../ui-styling/buttons/icons/profileBtn";
 import SearchBtn from "../ui-styling/buttons/icons/searchBtn";
 import WhiteTextBtn from "../ui-styling/buttons/text/whiteTextBtn";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { logoutThunk } from "../movie-website/services/auth-thunks";
 import HomeBtn from "../ui-styling/buttons/icons/homeBtn";
 import { removeUserFromLocalStorage } from "../movie-website/reducers/auth-reducer";
@@ -21,7 +21,6 @@ function MyNav({
     signOut: false,
   },
 }) {
-  const { currentUser } = useSelector(state => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -40,8 +39,8 @@ function MyNav({
   };
 
   return (
-    <Navbar>
-      <Nav className="container-fluid ps-5 pe-5 ">
+    <Navbar >
+      <Nav className="container-fluid ps-5 pe-5">
         <Nav.Item>
           <Navbar.Brand as={Link} to="/home">
             <h2 className="d-inline wd-purpleText">CineScope</h2>
@@ -66,7 +65,6 @@ function MyNav({
           )}
           {options.profile ? (
             <Nav.Item>
-              {/* <Nav.Link as={Link} to={`/profile/${currentUser.username}`}> */}
               <Nav.Link as={Link} to={`/profile`}>
                 <ProfileBtn />
               </Nav.Link>
@@ -86,10 +84,7 @@ function MyNav({
           {options.signOut ? (
             <Nav.Item>
               <Nav.Link as={Link} to="/home">
-                <WhiteTextBtn
-                  text={"Sign Out"}
-                  fn={handleLogout}
-                />
+                <WhiteTextBtn text={"Sign Out"} fn={handleLogout} />
               </Nav.Link>
             </Nav.Item>
           ) : (

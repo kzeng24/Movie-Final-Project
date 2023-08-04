@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./index.css";
 import { useSelector, useDispatch } from "react-redux";
 import { findMoviesThunk } from "../services/search-thunks";
@@ -16,7 +16,6 @@ function SearchResult() {
 
   return (
     <>
-      <div className="">
         <div className="container">
           <div className="wd-margin">
             <div className="list-group ">
@@ -57,7 +56,6 @@ function SearchResult() {
               )}
             </div>
           </div>
-        </div>
       </div>
     </>
   );

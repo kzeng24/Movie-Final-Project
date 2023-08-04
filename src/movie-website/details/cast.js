@@ -14,10 +14,10 @@ const Cast = () => {
     dispatch(findMovieDetailsThunk(id));
   }, [dispatch, id]);
 
-  console.log("TEST ", movieDetails.cast);
+
   return (
     <>
-      {movieDetails.cast && (
+      {movieDetails.cast?.length > 0 && (
         <div className="wd-review-div">
           <div className="wd-review-content">
             <div className="col-8">
@@ -47,7 +47,7 @@ const Cast = () => {
                   </div>
                 ))}
               </div>
-              {movieDetails.crew.length > 0 && (
+              {movieDetails.crew?.length > 0 && (
                 <>
                   <br />
                   <div className="row">

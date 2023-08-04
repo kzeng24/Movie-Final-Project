@@ -1,11 +1,12 @@
 import React from "react";
 import MyNav from "../../nav-components/nav";
-import MovieListItem from "./movie-info";
+import MovieListItem from "./movie-info/index";
 import ReviewSection from "./reviews/reviewSection";
 import { useSelector } from "react-redux";
 import MovieClipSection from "./movie-clip";
-import AudienceReviewSection from "./audience-reviews";
 import Cast from "./cast";
+import AudienceList from "./audience-reviews/audience-list";
+import BackBar from "../../nav-components/backBar";
 
 function Details() {
   const { currentUser } = useSelector((state) => state.user);
@@ -26,10 +27,10 @@ function Details() {
       )}
       <MovieListItem />
       <Cast />
-      <br />
       <MovieClipSection />
-      <AudienceReviewSection />
+      <AudienceList />
       <ReviewSection />
+      <BackBar />
     </div>
   );
 }

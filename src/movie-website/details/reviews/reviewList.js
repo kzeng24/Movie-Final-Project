@@ -17,20 +17,21 @@ const ReviewList = () => {
         loadMovieReviews();
     })
     return (
-        <div className="wd-review-list-div">
+      <>
+        {movieReviews?.length > 0 && (
+          <div className="wd-review-list-div">
             <ul className="list-group wd-review-list">
-                <li >
-                    <h3>User Reviews</h3><br />
-                </li>
-                {
-                    movieReviews && movieReviews.map((review) =>
-                        <ReviewItem
-                            key={review._id}
-                            review={review} />
-                    )
-                }
+              <li>
+                <h3>User Reviews</h3>
+                <br />
+              </li>
+              {movieReviews.map((review) => (
+                <ReviewItem key={review._id} review={review} />
+              ))}
             </ul>
-        </div>
+          </div>
+        )}
+      </>
     );
 }
 export default ReviewList;

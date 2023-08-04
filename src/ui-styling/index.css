@@ -53,7 +53,7 @@ h4 {
 }
 
 .wd-whiteBackground {
-    background-color: white;
+    background-color: white !important;
 }
 
 .wd-blackBackground {

@@ -5,9 +5,9 @@ import { fetchProfileByUsernameThunk } from "../../services/auth-thunks";
 import CriticReviewList from "./critic-review-list/criticReviewList";
 import MoviesBucketList from "./movie-bucket-list/moviesBucketList";
 import FollowedCriticsList from "./followed-critics-list/followedCriticsList";
-import BackBtn from "../../../ui-styling/buttons/icons/backBtn";
 import "../index.css"
 import { useParams } from "react-router";
+import BackBar from "../../../nav-components/backBar";
 
 function ProfileLists({isCurUser}) {
   const { currentUser } = useSelector((state) => state.user);
@@ -46,7 +46,7 @@ function ProfileLists({isCurUser}) {
         )}
       </div>
       <br />
-      <BackBtn />
+      <BackBar />
     </div>
   );
 }

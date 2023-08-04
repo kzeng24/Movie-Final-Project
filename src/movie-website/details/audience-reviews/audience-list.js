@@ -16,17 +16,23 @@ const AudienceList = () => {
   }, [dispatch, id]);
   return (
     <>
-      {!loading && (
-        <div className="wd-review-list-div">
-          <ul className="list-group wd-review-list">
-            <h3>Audience Reviews</h3>
-            <br />
-            <li>
-              {audienceReviews.length > 0 && audienceReviews.map((review) => (
-                <AudienceItem key={review._id} review={review} />
-              ))}
-            </li>
-          </ul>
+      {!loading && audienceReviews?.length > 0 && (
+        <div className="wd-review-div">
+          <div className="wd-review-content">
+            <div className="col-8">
+              <div className="wd-review-list-div">
+                <ul className="list-group wd-review-list">
+                  <h3>Audience Reviews</h3>
+                  <br />
+                  <li>
+                    {audienceReviews.map((review) => (
+                      <AudienceItem key={review._id} review={review} />
+                    ))}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </>

@@ -23,7 +23,6 @@ function Profile() {
       )}
       <ProfileInfo />
       {currentUser && <ProfileLists key={currentUser.roles ? currentUser.roles.join() : ''} />}
-
     </>
   );
 }

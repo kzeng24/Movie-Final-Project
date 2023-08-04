@@ -12,7 +12,6 @@ function MovieClipSection() {
     const { id } = useParams();
      useEffect(() => {
        dispatch(findMovieVideoThunk(id));
-       console.log("TEST", video);
      }, [dispatch, id]);
     return (
       <>

@@ -6,7 +6,8 @@ import "bootstrap/dist/css/bootstrap.css";
 const BackBar = () => {
   return (
     <div
-      className={`container-fluid ps-5 pe-5 position-fixed pb-3 pt-3 wd-bottom`}
+      style={{ bottom: "20px" }}
+      className={`container-fluid ps-5 pe-5 position-fixed pb-3 pt-3`}
     >
       <BackBtn />
     </div>

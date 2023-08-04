@@ -10,14 +10,11 @@ const API_KEY = "ffdfb660a1488ae7f304368f73e0e7ec";
 
 // loading video
 export const findMovieVideo = async (movieId) => {
-  const response = await axios.get(
-    "https://api.themoviedb.org/3/movie/" + movieId + "/videos",
-    {
-      params: {
-        api_key: API_KEY,
-      },
-    }
-  );
+  const response = await axios.get(MOVIE_DETAILS + movieId + "/videos", {
+    params: {
+      api_key: API_KEY,
+    },
+  });
   return response.data.results[0].key;
 };
 
@@ -36,31 +33,35 @@ export const findMovies = async (searchParams) => {
 }
 
 // movie details
-export const findMovieDetails = async(id) => {
-  const movieDetails = await axios.get(MOVIE_DETAILS + id, {
-    params: {
-      api_key: API_KEY,
-    },
-  });
-  const credits = await axios.get(MOVIE_DETAILS + id + "/credits", {
-    params: {
-      api_key: API_KEY,
-    },
-  });
-  const uniqueCrewId = [];
-  const uniqueCrew = [];
-  for (let i = 0; i < 8; i++) {
-    if (!uniqueCrewId.includes(credits.data.crew[i].id) && credits.data.crew[i].profile_path) {
-      uniqueCrewId.push(credits.data.crew[i].id);
-      uniqueCrew.push(credits.data.crew[i]);
-    }
-  }
+export const findMovieDetails = async (id) => {
+  const [movieDetailsResponse, creditsResponse] = await Promise.all([
+    axios.get(`${MOVIE_DETAILS}${id}`, {
+      params: { api_key: API_KEY } }),
+    axios.get(`${MOVIE_DETAILS}${id}/credits`, {
+      params: { api_key: API_KEY },
+    }),
+  ]);
+
+  const movieDetails = movieDetailsResponse.data;
+  const credits = creditsResponse.data;
+
+  const uniqueCrew = credits.crew
+    .filter((crew) => crew.profile_path)
+    .reduce((acc, crew) => {
+      if (!acc.some((c) => c.id === crew.id)) {
+        acc.push(crew);
+      }
+      return acc;
+    }, [])
+    .slice(0, 4);
+
   return {
-    ...movieDetails.data,
-    cast: credits.data.cast.slice(0, 4).filter(cast => cast.profile_path),
-    crew: uniqueCrew.slice(0, 4),
+    ...movieDetails,
+    cast: credits.cast.slice(0, 4).filter((cast) => cast.profile_path),
+    crew: uniqueCrew,
   };
-}
+};
+
 
 // displaying carousels
 async function loadResults(movie_api, pages) {
