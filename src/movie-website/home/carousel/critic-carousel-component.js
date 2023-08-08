@@ -41,7 +41,20 @@ function CriticCarouselComponent({ movieId }) {
           onMouseLeave={handleMouseLeave}
         >
           {displayOverlay && (
-            <h4 className="wd-centerTextOverlay">{movieReviewed.title}</h4>
+            <div
+              className="wd-centerTextOverlay"
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                borderRadius: "10px",
+                backgroundColor: "rgba(134, 32, 132, 0.4)", // Semi-transparent black overlay
+              }}
+            >
+             <h4>{movieReviewed.title}</h4>
+            </div>
           )}
           <img
             src={

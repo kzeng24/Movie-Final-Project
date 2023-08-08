@@ -30,10 +30,8 @@
 }
 
 .wd-centerTextOverlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
-    background-color: rgba(134, 21, 137, 0.246);
 }

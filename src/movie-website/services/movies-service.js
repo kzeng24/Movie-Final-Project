@@ -85,21 +85,20 @@ async function queryMovieHelper(movie_api, pages) {
 }
 
 export const findLatestMovies = async () => {
-  return await queryMovieHelper(LATEST_MOVIES_API, 1);
+  return await queryMovieHelper(LATEST_MOVIES_API, 4);
 };
 
 export const findPopularMovies = async () => {
-  return await queryMovieHelper(POPULAR_MOVIES_API, 1);
+  return await queryMovieHelper(POPULAR_MOVIES_API, 4);
 };
 
 export const findTopMovies = async () => {
-  return (await queryMovieHelper(TOP_MOVIES_API, 1));
+  return (await queryMovieHelper(TOP_MOVIES_API, 4));
 };
 
 export const findUpcomingMovies = async () => {
-  return (await queryMovieHelper(UPCOMING_MOVIES_API, 5))
+  return (await queryMovieHelper(UPCOMING_MOVIES_API, 6))
     .filter((movie) => movie.vote_count === 0)
-    .slice(0, 16);
 };
 
 // audience reviews

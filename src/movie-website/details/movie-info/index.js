@@ -117,9 +117,14 @@ const MovieListItem = () => {
 
               <h5>
                 <LuStars />{" "}
-                {movieDetails.vote_average === 0
-                  ? "Not rated yet"
-                  : movieDetails.vote_average + " / 10"}
+                {movieDetails.vote_average === 0 ? (
+                  "Not rated yet"
+                ) : (
+                  <span>
+                    <b>{movieDetails.vote_average} / 10</b> (
+                    {movieDetails.vote_count} votes)
+                  </span>
+                )}
               </h5>
               <br />
               <h5>
@@ -172,6 +177,8 @@ const MovieListItem = () => {
                   </a>
                 </h5>
               )}
+
+             
 
               <div className="d-sm-block d-md-none wd-details-row">
                 <img
