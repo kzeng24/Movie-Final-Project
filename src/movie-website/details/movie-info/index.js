@@ -2,18 +2,19 @@ import React, { useEffect } from "react";
 import "./details.css";
 import "../../../ui-styling/index.css";
 import SavedBtn from "../../../ui-styling/buttons/icons/savedBtn";
-import { useParams } from "react-router-dom";
+import { useParams, createSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import DeleteBtn from "../../../ui-styling/buttons/icons/deleteBtn";
 import { updateUserThunk } from "../../services/auth-thunks";
-import {findMovieDetailsThunk} from "../../services/movies-thunks"
+import {findMovieDetailsThunk, findGenreMoviesThunk} from "../../services/movies-thunks"
 import TagBtn from "../../../ui-styling/buttons/text/tagBtn";
 import {MdOutlineDateRange} from "react-icons/md";
 import { SlGlobe } from "react-icons/sl";
-import { LuStars } from "react-icons/lu";
-import {MdMovieFilter} from "react-icons/md";
+import { MdMovieFilter, MdOutlineAttachMoney } from "react-icons/md";
 import {RxLapTimer} from "react-icons/rx";
+import { Badge } from "@mui/material";
+import { BsPersonFillCheck } from "react-icons/bs";
 
 const MovieListItem = () => {
   const { currentUser } = useSelector(state => state.user);
@@ -54,6 +55,19 @@ const MovieListItem = () => {
     alert("Create an account to proceed");
     navigate("/login");
   }
+
+  const onClickGenre = (id) => {
+    dispatch(findGenreMoviesThunk(id));
+    navigate({
+      pathname: "/search",
+      search: `?${createSearchParams({
+        with_genres: id,
+      }).toString()}`,
+    });
+  }
+
+  var nf = new Intl.NumberFormat();
+  nf.format(movieDetails.revenue);
 
   // Check if movie exists and that all lists are loaded
   if (!movieDetails) {
@@ -113,16 +127,20 @@ const MovieListItem = () => {
               {movieDetails.original_language !== "en" && (
                 <h5>({movieDetails.original_title})</h5>
               )}
-              <br />
 
               <h5>
-                <LuStars />{" "}
-                {movieDetails.vote_average === 0 ? (
-                  "Not rated yet"
-                ) : (
+                {movieDetails.vote_average > 0 && (
                   <span>
-                    <b>{movieDetails.vote_average} / 10</b> (
-                    {movieDetails.vote_count} votes)
+                    <br />
+                    <Badge
+                      badgeContent={movieDetails.vote_count}
+                      max={1000000}
+                      color="secondary"
+                      style={{ marginRight: "30px" }}
+                    >
+                      <BsPersonFillCheck color="action" />
+                    </Badge>
+                    <b>{movieDetails.vote_average} / 10</b>
                   </span>
                 )}
               </h5>
@@ -145,7 +163,10 @@ const MovieListItem = () => {
               <h5>
                 {movieDetails.genres?.map((genre) => (
                   <>
-                    <TagBtn text={genre.name} />
+                    <TagBtn
+                      text={genre.name}
+                      fn={() => onClickGenre(genre.id)}
+                    />
                   </>
                 ))}
               </h5>
@@ -167,6 +188,14 @@ const MovieListItem = () => {
                   <RxLapTimer /> {movieDetails.runtime} minutes
                 </h5>
               )}
+              <br />
+
+              {movieDetails.revenue > 0 && (
+                <h5>
+                  <MdOutlineAttachMoney />{" "}
+                  {movieDetails.revenue.toLocaleString()} box office
+                </h5>
+              )}
 
               <br />
               {movieDetails.homepage && (
@@ -177,8 +206,6 @@ const MovieListItem = () => {
                   </a>
                 </h5>
               )}
-
-             
 
               <div className="d-sm-block d-md-none wd-details-row">
                 <img

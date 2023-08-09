@@ -17,6 +17,9 @@ import popularMoviesReducer from "./movie-website/reducers/popular-movies-reduce
 import upcomingMoviesReducer from "./movie-website/reducers/upcoming-movies-reducer";
 import movieDetailsReducer from "./movie-website/reducers/movie-details-reducer";
 import audienceReviewsReducer from "./movie-website/reducers/audience-reviews-reducer";
+import genresReducer from "./movie-website/reducers/genres-reducer";
+import genreMoviesReducer from "./movie-website/reducers/genre-movies-reducer";
+import blockbustersReducer from "./movie-website/reducers/blockbusters-reducer";
 
 const store = configureStore({
   reducer: {
@@ -29,7 +32,10 @@ const store = configureStore({
     popularMovies: popularMoviesReducer,
     upcomingMovies: upcomingMoviesReducer,
     movieDetails: movieDetailsReducer,
-    audienceReviews: audienceReviewsReducer
+    audienceReviews: audienceReviewsReducer,
+    genres: genresReducer,
+    genreMovies: genreMoviesReducer,
+    blockbusters: blockbustersReducer
   },
 });
 

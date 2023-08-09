@@ -12,7 +12,6 @@ const AudienceList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(findAudienceReviewsThunk(id));
-    console.log(id);
   }, [dispatch, id]);
   return (
     <>

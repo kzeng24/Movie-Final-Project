@@ -32,11 +32,11 @@ function Search() {
         <MyNav />
       )}
 
-      <SearchInput onSearch={handleSearch}/>
+      <SearchInput onSearch={handleSearch} />
       <br />
       <hr />
 
-      {search !== "" ? <SearchResult results={results}/> : ""}
+      {search !== "" ? <SearchResult results={results} /> : ""}
 
       <BackBar />
     </>

@@ -31,8 +31,6 @@ function RegisterScreen() {
     const dispatch = useDispatch();
 
     const handleRegister = async () => {
-        console.log('Register button clicked');
-
         try {
             const roles = role.map(r => r.value);
             const actionResult = await dispatch(registerThunk({ username, password, firstName, lastName, email, roles }));

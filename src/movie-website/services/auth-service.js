@@ -6,7 +6,6 @@ const api = axios.create({ withCredentials: true });
 
 export const login = async ({ username, password }) => {
     const response = await api.post(`${USERS_URL}/login`, { username, password });
-    console.log("LOGIN RESPONSE:", response);  // Log the full response
     const user = response.data;
     return user;
 };
@@ -30,7 +29,6 @@ export const updateUser = async (user) => {
 export const register = async ({ username, password, firstName, lastName, email, roles }) => {
     const response = await api.post(`${USERS_URL}/register`, { username, password, firstName, lastName, email, roles });
     const user = response.data;
-    console.log("USERRR: ", user);
     return user;
 };
 

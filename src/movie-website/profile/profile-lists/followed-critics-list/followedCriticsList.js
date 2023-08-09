@@ -18,7 +18,6 @@ function FollowedCriticsList() {
         setFollowedCritics(currentUser?.followedCritics);
       } else if (username && username !== currentUser.username) {
         const { payload } = await dispatch(fetchProfileByUsernameThunk(username));
-        console.log(payload);
         setFollowedCritics(payload.followedCritics);
       }
     }

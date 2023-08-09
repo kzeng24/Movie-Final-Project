@@ -1,5 +1,5 @@
 .wd-outer-div {
-    background-color: rgb(204, 173, 234);
+    background-color: black!important;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,10 +9,10 @@
 }
 
 .wd-inner-div {
-    background-color: white;
-    padding: 50px;
+    /* background-color: white; */
+    padding: 20px;
     text-align: center;
-    width: 60%;
+    width: 80%;
     margin-top: 25px;
     margin-bottom: 25px;
 }

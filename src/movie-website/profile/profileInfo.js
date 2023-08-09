@@ -73,9 +73,6 @@ function ProfileInfo({ isCurUser }) {
   const handleFollow = async () => {
     try {
       if (isAnotherViewer) {
-        console.log(
-          followedCritics.filter((critic) => critic._id === profile._id)
-        );
         if (
           followedCritics.filter((critic) => critic._id === profile._id)
             .length === 0

@@ -9,10 +9,12 @@ import {
   findTopMoviesThunk,
   findPopularMoviesThunk,
   findUpcomingMoviesThunk,
+  findBlockbustersThunk,
 } from "../../services/movies-thunks";
 import { findCriticReviewsThunk } from '../../services/reviews-thunks';
 import CriticCarouselComponent from './critic-carousel-component';
 import CarouselComponent from './carousel-component';
+import { findBlockbusters } from '../../services/movies-service';
 
 
 const HomeCarousel = forwardRef((props, ref) => {
@@ -38,6 +40,7 @@ const HomeCarousel = forwardRef((props, ref) => {
   const { newMovies } = useSelector((state) => state.newMovies);
   const { topMovies } = useSelector((state) => state.topMovies);
   const { popularMovies } = useSelector((state) => state.popularMovies);
+  const { blockbusters } = useSelector((state) => state.blockbusters);
   const { upcomingMovies } = useSelector((state) => state.upcomingMovies);
   const [reviewedMovies, setReviewedMovies] = useState([]);
   const savedMovies = currentUser?.savedMovies;
@@ -49,6 +52,7 @@ const HomeCarousel = forwardRef((props, ref) => {
     dispatch(findTopMoviesThunk());
     dispatch(findPopularMoviesThunk());
     dispatch(findUpcomingMoviesThunk());
+    dispatch(findBlockbustersThunk());
 
     const loadReviewedMovies = async () => {
       let movieIds = [];
@@ -164,6 +168,27 @@ const HomeCarousel = forwardRef((props, ref) => {
           partialVisible={false}
         >
           {popularMovies.map((movie) => {
+            return <CarouselComponent movie={movie} />;
+          })}
+        </Carousel>
+      </div>
+
+      <div className="wd-carousel-title position-relative">
+        <div className="wd-text-container">
+          <h3 className="wd-purpleText">Blockbusters</h3>
+        </div>
+      </div>
+      <div className="wd-carousel-parent">
+        <Carousel
+          responsive={responsive}
+          autoPlay={true}
+          swipeable={true}
+          draggable={true}
+          showDots={false}
+          infinite={true}
+          partialVisible={false}
+        >
+          {blockbusters.map((movie) => {
             return <CarouselComponent movie={movie} />;
           })}
         </Carousel>
