@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { findMovieVideoThunk } from "../services/movies-thunks";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import MediaQuery from "react-responsive";
 
 function MovieClipSection() {
     const { video } = useSelector((state) => state.video);
@@ -21,20 +22,36 @@ function MovieClipSection() {
               <div className="col-8">
                 <h3 style={{ color: "white" }}>Movie Clip</h3>
                 <br />
-                <ReactPlayer
-                  url={video}
-                  playing={false}
-                  loop={false}
-                  width="100%"
-                  height="55vh"
-                  config={{
-                    youtube: {
-                      playerVars: { modestbranding: 1 },
-                    },
-                  }}
-                />
+                <MediaQuery minDeviceWidth={1224}>
+                  <ReactPlayer
+                    url={video}
+                    playing={false}
+                    loop={false}
+                    width="100%"
+                    height="55vh"
+                    config={{
+                      youtube: {
+                        playerVars: { modestbranding: 1 },
+                      },
+                    }}
+                  />
+                </MediaQuery>
               </div>
             </div>
+            <MediaQuery maxDeviceWidth={768}>
+              <ReactPlayer
+                url={video}
+                playing={false}
+                loop={false}
+                width="100%"
+                height="30vh"
+                config={{
+                  youtube: {
+                    playerVars: { modestbranding: 1 },
+                  },
+                }}
+              />
+            </MediaQuery>
           </div>
         )}
       </>

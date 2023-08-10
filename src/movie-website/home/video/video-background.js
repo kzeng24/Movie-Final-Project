@@ -12,24 +12,13 @@ function VideoBackground({ topMovieRef }) {
   const { firstMovie } = useSelector((state) => state.newMovies || {});
   const { video } = useSelector((state) => state.video || {});
   const dispatch = useDispatch();
-  const [isMobile, setIsMobile] = useState();
 
   useEffect(() => {
     if (firstMovie) {
       dispatch(findMovieVideoThunk(firstMovie.id));
     }
-
   }, [firstMovie]);
 
-//  const handleWindowSizeChange = () => {
-//    setIsMobile(window.innerWidth <= 768);
-//    console.log("isMobile:", isMobile); // Log the value here
-//  };
-
- useEffect(() => {
-   setIsMobile(window.innerWidth <= 768);
-   console.log("isMobile:", isMobile);
- }, []);
 
   const divStyle = {
     position: "fixed",
