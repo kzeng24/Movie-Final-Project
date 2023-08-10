@@ -12,8 +12,8 @@ function MovieWebsite() {
     <>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Navigate to="/home" />} />
-        <Route path="/home" element={<Home />} />
+        {/* <Route path="/" element={<Navigate to="/home" />} /> */}
+        <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/profile" element={<CurrentUserProfile />} />
         <Route path="/profile/:username" element={<Profile />} />

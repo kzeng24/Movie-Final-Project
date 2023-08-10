@@ -14,7 +14,6 @@ import {
 import { findCriticReviewsThunk } from '../../services/reviews-thunks';
 import CriticCarouselComponent from './critic-carousel-component';
 import CarouselComponent from './carousel-component';
-import { findBlockbusters } from '../../services/movies-service';
 
 
 const HomeCarousel = forwardRef((props, ref) => {
@@ -31,8 +30,8 @@ const HomeCarousel = forwardRef((props, ref) => {
       slidesToSlide: 3
     },
     mobile: {
-      breakpoint: { max: 767, min: 464 },
-      items: 2,
+      breakpoint: { max: 767, min: 200 },
+      items: 1,
       slidesToSlide: 1
     }
   };

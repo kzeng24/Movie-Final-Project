@@ -1,7 +1,7 @@
 .wd-video-background {
     position: relative;
     width: 100%;
-    height: 70vh;
+    /* height: 70vh; */
     overflow: hidden;
 }
 

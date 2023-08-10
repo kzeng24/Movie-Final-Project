@@ -42,7 +42,7 @@ function MyNav({
     <Navbar >
       <Nav className="container-fluid ps-5 pe-5">
         <Nav.Item>
-          <Navbar.Brand as={Link} to="/home">
+          <Navbar.Brand as={Link} to="/">
             <h2 className="d-inline wd-purpleText">CineScope</h2>
           </Navbar.Brand>
         </Nav.Item>
@@ -51,7 +51,7 @@ function MyNav({
             ""
           ) : (
             <Nav.Item>
-              <Nav.Link as={Link} to={"/home"}>
+              <Nav.Link as={Link} to={"/"}>
                 <HomeBtn />
               </Nav.Link>
             </Nav.Item>
@@ -83,7 +83,7 @@ function MyNav({
           )}
           {options.signOut ? (
             <Nav.Item>
-              <Nav.Link as={Link} to="/home">
+              <Nav.Link as={Link} to="/">
                 <WhiteTextBtn text={"Sign Out"} fn={handleLogout} />
               </Nav.Link>
             </Nav.Item>

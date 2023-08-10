@@ -66,7 +66,7 @@ function InnerApp() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/home" />} />
+        {/* <Route path="/" element={<Navigate to="/home" />} /> */}
         <Route path="/*" element={<MovieWebsite />} />
       </Routes>
     </BrowserRouter>
