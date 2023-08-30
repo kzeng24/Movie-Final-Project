@@ -34,7 +34,6 @@ function Search() {
 
       <SearchInput onSearch={handleSearch} />
       <br />
-      <hr />
 
       {search !== "" ? <SearchResult results={results} /> : ""}
 
